@@ -113,7 +113,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
     @NSManaged var isClockwise: Bool
     
     var animationDuration: TimeInterval = 1.0
-    var animationStyle: String = kCAMediaTimingFunctionEaseInEaseOut
+    var animationStyle: String = CAMediaTimingFunctionName.easeInEaseOut.rawValue
     var animated = false
     @NSManaged weak var valueDelegate: UICircularProgressRingView?
     
@@ -135,7 +135,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
 
     // Returns whether or not a given property key is animatable
     private static func isAnimatableProperty(_ key: String) -> Bool {
-        return animatableProperties.index(of: key) != nil
+        return animatableProperties.firstIndex(of: key) != nil
     }
 
     // MARK: Draw
@@ -180,13 +180,13 @@ class UICircularProgressRingLayer: CAShapeLayer {
         if event == "value" && self.animated {
             let animation = CABasicAnimation(keyPath: "value")
             animation.fromValue = self.presentation()?.value(forKey: "value")
-            animation.timingFunction = CAMediaTimingFunction(name: self.animationStyle)
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: self.animationStyle))
             animation.duration = self.animationDuration
             return animation
         } else if UICircularProgressRingLayer.isAnimatableProperty(event) && self.shouldAnimateProperties {
             let animation = CABasicAnimation(keyPath: event)
             animation.fromValue = self.presentation()?.value(forKey: event)
-            animation.timingFunction = CAMediaTimingFunction(name: self.animationStyle)
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: self.animationStyle))
             animation.duration = self.propertyAnimationDuration
             return animation
         } else {
@@ -250,21 +250,24 @@ class UICircularProgressRingLayer: CAShapeLayer {
         let center: CGPoint = CGPoint(x: bounds.midX, y: bounds.midY)
         
         let innerEndAngle: CGFloat
+        let diff = (value - minValue)
         
         if fullCircle {
+            let helper = (maxValue - minValue) * 360.0
             if (!isClockwise) {
-                innerEndAngle = startAngle - ((value - minValue) / (maxValue - minValue) * 360.0)
+                innerEndAngle = startAngle - ( diff / helper )
             } else {
-                innerEndAngle = (value - minValue) / (maxValue - minValue) * 360.0 + startAngle
+                innerEndAngle = diff / helper + startAngle
             }
         } else {
             // Calculate the center difference between the end and start angle
             let angleDiff: CGFloat = (startAngle > endAngle) ? (360.0 - startAngle + endAngle) : (endAngle - startAngle)
             // Calculate how much we should draw depending on the value set
+            let maxMinDiff = (maxValue - minValue)
             if (!isClockwise) {
-                innerEndAngle = startAngle - ((value - minValue) / (maxValue - minValue) * angleDiff)
+                innerEndAngle = startAngle - (diff / maxMinDiff * angleDiff)
             } else {
-                innerEndAngle = (value - minValue) / (maxValue - minValue) * angleDiff + startAngle
+                innerEndAngle = diff / maxMinDiff * angleDiff + startAngle
             }
         }
         

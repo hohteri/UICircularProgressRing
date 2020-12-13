@@ -38,7 +38,7 @@ import UIKit
  ## Author
  Luis Padron
  */
-public protocol UICircularProgressRingDelegate: class {
+@objc public protocol UICircularProgressRingDelegate: class {
     /**
      Called when progress ring is done animating for current value
      

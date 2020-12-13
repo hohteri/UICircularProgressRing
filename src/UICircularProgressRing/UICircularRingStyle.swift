@@ -37,7 +37,7 @@ import UIKit.UIColor
  Luis Padron
 
  */
-public enum UICircularRingStyle {
+@objc public enum UICircularRingStyle {
     /// inner ring is inside the circle
     case inside
 
@@ -153,7 +153,7 @@ public struct UICircularRingValueKnobStyle {
  gradient. Used inside the `UICircularRingLayer` to allow customization
  for the gradient.
  */
-public enum UICircularRingGradientPosition {
+@objc public enum UICircularRingGradientPosition: Int {
     /// Gradient positioned at the top
     case top
     /// Gradient positioned at the bottom

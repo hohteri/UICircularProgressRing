@@ -25,7 +25,7 @@
 
 import UIKit
 
-final public class UICircularProgressRing: UICircularRing {
+@objc final public class UICircularProgressRing: UICircularRing {
     // MARK: Members
 
     /**

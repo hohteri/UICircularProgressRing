@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -8,6 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "UICircularProgressRing",
+	    type: .dynamic,
             targets: ["UICircularProgressRing"]),
     ],
     dependencies: [

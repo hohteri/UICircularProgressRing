@@ -188,7 +188,7 @@ import UIKit
      ## Author
      Luis Padron
      */
-    public func startProgress(to value: CGFloat, duration: TimeInterval, completion: ProgressCompletion? = nil) {
+    @objc public func startProgress(to value: CGFloat, duration: TimeInterval, completion: ProgressCompletion? = nil) {
         // Store the completion event locally
         self.completion = completion
 
@@ -212,7 +212,7 @@ import UIKit
      ## Author
      Luis Padron & Nicolai Cornelis
      */
-    public func pauseProgress() {
+    @objc public func pauseProgress() {
         // call super class helper to stop layer animation
         pauseAnimation()
         delegate?.didPauseProgress(for: self)
@@ -226,7 +226,7 @@ import UIKit
      ## Author
      Luis Padron & Nicolai Cornelis
      */
-    public func continueProgress() {
+    @objc public func continueProgress() {
         // call super class helper to continue layer animation
         continueAnimation {
             self.delegate?.didFinishProgress(for: self)
@@ -243,7 +243,7 @@ import UIKit
      ## Author
      Luis Padron
      */
-    public func resetProgress() {
+    @objc public func resetProgress() {
         // call super class helper to reset animation layer
         resetAnimation()
         value = minValue

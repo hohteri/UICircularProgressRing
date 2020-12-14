@@ -46,7 +46,7 @@ import UIKit
         - ring: The ring which finished animating
      
      */
-    func didFinishProgress(for ring: UICircularProgressRing)
+    @objc func didFinishProgress(for ring: UICircularProgressRing)
 
     /**
      Called when progress has paused
@@ -54,7 +54,7 @@ import UIKit
      - Parameter:
        - ring: The ring which has paused
      */
-    func didPauseProgress(for ring: UICircularProgressRing)
+    @objc func didPauseProgress(for ring: UICircularProgressRing)
 
     /**
      Called when the progress has continued after a pause
@@ -62,7 +62,7 @@ import UIKit
      - Parameter:
        - ring: The ring which has continued
      */
-    func didContinueProgress(for ring: UICircularProgressRing)
+    @objc func didContinueProgress(for ring: UICircularProgressRing)
 
     /**
      This method is called whenever the value is updated, this means during animation this method will be called in real time.
@@ -78,7 +78,7 @@ import UIKit
         - ring: The ring which updated the progress
         - newValue: The value which the ring has updated to
      */
-    func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat)
+    @objc func didUpdateProgressValue(for ring: UICircularProgressRing, to newValue: CGFloat)
 
     /**
      This method is called whenever the label is about to be drawn.
@@ -88,5 +88,5 @@ import UIKit
         - ring: The ring which the label will be displayed in
         - label: The label which will be displayed
      */
-    func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel)
+    @objc func willDisplayLabel(for ring: UICircularProgressRing, _ label: UILabel)
 }

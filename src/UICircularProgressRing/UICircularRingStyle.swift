@@ -37,7 +37,7 @@ import UIKit.UIColor
  Luis Padron
 
  */
-@objc public enum UICircularRingStyle: Int {
+public enum UICircularRingStyle {
     /// inner ring is inside the circle
     case inside
 

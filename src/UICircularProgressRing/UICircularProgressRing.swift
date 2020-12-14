@@ -41,7 +41,7 @@ import UIKit
      ## Author
      Luis Padron
      */
-    public weak var delegate: UICircularProgressRingDelegate?
+    @objc public weak var delegate: UICircularProgressRingDelegate?
 
     /**
      The value property for the progress ring.

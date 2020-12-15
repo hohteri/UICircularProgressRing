@@ -271,7 +271,7 @@ import UIKit
      ## Author
      Luis Padron
      */
-    open var innerCapStyle: CGLineCap = .round {
+    @objc open var innerCapStyle: CGLineCap = .round {
         didSet { ringLayer.setNeedsDisplay() }
     }
 
